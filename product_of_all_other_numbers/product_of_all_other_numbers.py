@@ -4,8 +4,22 @@ Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
     # Your code here
+    # method 1:
+    # iterate using index
+    # use another pointer iterate through the list
+    # if both pointers are not equal, multiply
+    # O(n^2)
+    product_list = []
+    for i in range(0, len(arr)):
+        j = 0
+        ans = 1
+        while j <= len(arr)-1:
+            if j != i:
+                ans = ans * arr[j]
+            j += 1
+        product_list.append(ans)
 
-    pass
+    return product_list
 
 
 if __name__ == '__main__':

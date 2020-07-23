@@ -4,8 +4,36 @@ Returns: a List of integers
 '''
 def sliding_window_max(nums, k):
     # Your code here
+    # method 1: FAILED LARGE INPUT
+    # create window array of size k with two pointers (start=0, end=k)
+    # find max for each window array
+    # iterate through nums until end reaches len(nums)-1
+    # O(n^2)
+    # start = 0
+    # end = k
+    # ans = []
+    # while end <= len(nums):
+    #     arr = nums[start:end]
+    #     ans.append(max(arr))
+    #     start +=1
+    #     end +=1
+    # return ans
 
-    pass
+    if not nums:
+        return []
+    max_number = max(nums[:k])
+    max_number_index = nums[:k].index(max_number)
+    ans = [max_number]
+    i = k
+    for i in range(k, len(nums)):
+        if nums[i] > max_number:
+            max_number, max_number_index = nums[i], i
+        elif i-(k-1) >= max_number_index:
+            arr = nums[i-(k-1): (i+1)]
+            max_number = max(arr)
+            max_number_index = i-(k-1) + arr.index(max_number)
+        ans.append(max_number)
+    return ans
 
 
 if __name__ == '__main__':
