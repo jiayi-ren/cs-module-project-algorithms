@@ -7,7 +7,7 @@ def moving_zeroes(arr):
     # method 1:
     # iterate through arr
     # if zero, swap with last non zero item
-
+    # time: O(n), space: O(1)
     start = 0
     end = len(arr)-1
     while start < end:
